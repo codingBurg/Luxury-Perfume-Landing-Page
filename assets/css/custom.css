@@ -1,0 +1,215 @@
+/* 
+ * Luxury Perfume Landing Page - Custom Styles
+ * Crafted by CodingBurg (codingburg.com)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --font-bn: 'Hind Siliguri', sans-serif;
+    --font-en: 'Plus Jakarta Sans', sans-serif;
+    --font-luxury: 'Cinzel', serif;
+
+    --gold-primary: #d4af37;
+    --gold-light: #fbeea8;
+    --gold-dark: #997819;
+    --gold-gradient: linear-gradient(135deg, #fce074 0%, #dfb43a 50%, #b8860b 100%);
+    --gold-glow: 0 0 25px rgba(212, 175, 55, 0.45);
+    
+    --bg-dark: #07090e;
+    --bg-card: rgba(18, 22, 34, 0.75);
+    --border-gold: rgba(212, 175, 55, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-bn);
+    background-color: var(--bg-dark);
+    color: #e2e8f0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.font-luxury {
+    font-family: var(--font-luxury);
+    letter-spacing: 0.05em;
+}
+
+.font-en {
+    font-family: var(--font-en);
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Luxury Glow & Cards */
+.gold-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    backdrop-filter: blur(14px);
+    transition: all 0.35s ease;
+}
+
+.gold-card:hover {
+    border-color: rgba(212, 175, 55, 0.65);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+    transform: translateY(-3px);
+}
+
+.gold-border-glow {
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Shimmer Button */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: var(--gold-gradient);
+    color: #0b0f19;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+    transition: all 0.65s;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    40%, 100% { left: 160%; }
+}
+
+.btn-shimmer:hover {
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.65);
+    transform: scale(1.02);
+}
+
+/* Pulse animation */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 0 14px rgba(212, 175, 55, 0);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGreen {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+    }
+}
+
+.animate-pulse-green {
+    animation: pulseGreen 2.5s infinite;
+}
+
+/* Glassmorphism elements */
+.glass-nav {
+    background: rgba(7, 9, 14, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.glass-floating {
+    background: rgba(13, 17, 26, 0.92);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+/* Radio Card Selection */
+.package-card input[type="radio"]:checked + .package-content {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.08);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.package-card input[type="radio"]:checked + .package-content .radio-indicator {
+    border-color: #d4af37;
+    background-color: #d4af37;
+}
+
+/* Accordion transition */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Live Notification Toast */
+#live-sale-toast {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    z-index: 40;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#live-sale-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 640px) {
+    #live-sale-toast {
+        left: 12px;
+        right: 12px;
+        bottom: 84px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+    background: #2a3447;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}

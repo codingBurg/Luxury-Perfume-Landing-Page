@@ -1,0 +1,5 @@
+# Deny direct access to data files
+<Files ~ "\.(json|txt|log)$">
+    Order allow,deny
+    Deny from all
+</Files>
