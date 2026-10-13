@@ -12,3 +12,6 @@ desktop.ini
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+# Isolated sub-projects with their own git repositories
+village-food/
